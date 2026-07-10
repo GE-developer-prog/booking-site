@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Book a Session — Breathe Easy Stretch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/src/css/main.css" />
+</head>
+<body class="bg-off-white">
+
+  <div id="page-loader"><p class="loader-logo  text-center lg:text-[28px] md:text-[28px] text-[17px]">Breathe Easy Stretch</p><div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div></div>
+
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-sage transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3 no-underline">
+        <div class="w-8 h-8 rounded-full border-2 border-mist flex items-center justify-center"><i class="fa-solid fa-wind text-mist text-xs"></i></div>
+        <span class="font-display text-off-white tracking-wide lg:text-[21px] md:text-[20px] text-[16px] ">Breathe Easy Stretch</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="booking.html" class="nav-link active">Book Now</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </div>
+      <button id="menu-toggle" class="md:hidden text-off-white text-xl bg-transparent border-none cursor-pointer"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <button id="menu-close" class="absolute top-6 right-6 text-mist text-2xl bg-transparent border-none cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="services.html" class="mobile-nav-link">Services</a>
+    <a href="booking.html" class="mobile-nav-link">Book Now</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+  </div>
+
+  <div class="pt-20 min-h-screen">
+
+    <div class="bg-sage py-12 px-6 text-center">
+      <p class="text-mist text-xs tracking-widest uppercase mb-3">Let's get started</p>
+      <h1 class="font-display text-4xl md:text-5xl text-off-white">Book Your Session</h1>
+    </div>
+
+    <!-- Step Indicator -->
+    <div class="bg-white border-b border-gray-100 py-6 px-6 sticky top-20 z-30">
+      <div class="max-w-3xl mx-auto flex items-center justify-center">
+        <div class="flex items-center gap-0">
+          <div class="flex flex-col items-center gap-1">
+            <div class="step active" id="step-1-indicator">1</div>
+            <span class="text-xs text-warm-gray hidden sm:block">Service</span>
+          </div>
+          <div class="step-line" id="line-1"></div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="step" id="step-2-indicator">2</div>
+            <span class="text-xs text-warm-gray hidden sm:block">Schedule</span>
+          </div>
+          <div class="step-line" id="line-2"></div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="step" id="step-3-indicator">3</div>
+            <span class="text-xs text-warm-gray hidden sm:block">Details</span>
+          </div>
+          <div class="step-line" id="line-3"></div>
+          <div class="flex flex-col items-center gap-1">
+            <div class="step" id="step-4-indicator">4</div>
+            <span class="text-xs text-warm-gray hidden sm:block">Payment</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-3xl mx-auto px-6 py-12">
+
+      <!-- STEP 1: Service Selection (loaded from API) -->
+      <div class="booking-panel active" id="panel-1">
+        <h2 class="font-display text-3xl text-charcoal mb-2">Choose your service</h2>
+        <p class="text-warm-gray text-sm mb-8">Select the session that's right for you.</p>
+
+        <div class="grid sm:grid-cols-2 gap-5" id="booking-services-container">
+          <div class="col-span-full text-center py-16 text-warm-gray">
+            <i class="fa-solid fa-spinner fa-spin text-3xl mb-4 block text-sage"></i>
+            <p>Loading services...</p>
+          </div>
+        </div>
+
+        <div class="price-display mt-6" id="price-display" style="display:none;">
+          <p class="total-label">Session Price</p>
+          <p class="total-amount" id="live-total">$0</p>
+          <p class="total-breakdown" id="live-breakdown"></p>
+        </div>
+
+        <div class="mt-8">
+          <button id="step1-next" onclick="goToStep(2)" class="btn-primary opacity-40 cursor-not-allowed" disabled>
+            Continue to Schedule <i class="fa-solid fa-arrow-right ml-2"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- STEP 2: Schedule (loaded from API) -->
+      <div class="booking-panel" id="panel-2">
+        <div class="flex items-center gap-3 mb-6">
+          <button onclick="goToStep(1)" class="text-warm-gray hover:text-sage transition-colors bg-transparent border-none cursor-pointer text-base"><i class="fa-solid fa-arrow-left"></i></button>
+          <div>
+            <h2 class="font-display text-3xl text-charcoal">Choose a time</h2>
+            <p class="text-warm-gray text-sm">Pick an available date and time.</p>
+          </div>
+        </div>
+
+        <div id="availability-calendar" class="bg-white border border-gray-100 p-6 mb-6 min-h-48">
+          <div class="text-center py-12 text-warm-gray">
+            <i class="fa-solid fa-spinner fa-spin text-3xl mb-4 block text-sage"></i>
+            <p>Loading availability...</p>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <button onclick="goToStep(1)" class="btn-outline">Back</button>
+          <button id="step2-next" onclick="goToStep(3)" class="btn-primary opacity-40 cursor-not-allowed" disabled>Continue to Details <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 3: Client Details -->
+      <div class="booking-panel" id="panel-3">
+        <div class="flex items-center gap-3 mb-6">
+          <button onclick="goToStep(2)" class="text-warm-gray hover:text-sage transition-colors bg-transparent border-none cursor-pointer text-base"><i class="fa-solid fa-arrow-left"></i></button>
+          <div>
+            <h2 class="font-display text-3xl text-charcoal">Your details</h2>
+            <p class="text-warm-gray text-sm">Just a few details to confirm your booking.</p>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <div class="bg-ivory border border-gray-200 p-4 mb-6">
+          <div class="flex items-center justify-between mb-1">
+            <span class="text-sm font-medium text-charcoal" id="summary-service-name">Service</span>
+            <span class="text-sm text-ember font-medium" id="summary-service-price">$0</span>
+          </div>
+          <p class="text-xs text-warm-gray" id="summary-date-time"></p>
+        </div>
+
+        <form id="details-form" class="space-y-5">
+          <div><label class="field-label">Full Name *</label><input type="text" class="field-input" id="client-name" placeholder="Jane Doe" required /></div>
+          <div><label class="field-label">Email Address *</label><input type="email" class="field-input" id="client-email" placeholder="jane@example.com" required /></div>
+          <div>
+            <label class="field-label">Phone Number *</label>
+            <input type="tel" class="field-input" id="client-phone" placeholder="2348012345678" required />
+            <p class="text-xs text-warm-gray mt-1">Include your country code, no spaces or symbols needed.</p>
+          </div>
+          <div><label class="field-label">Note for your therapist (optional)</label><textarea class="field-input" id="client-note" rows="3" placeholder="Areas of focus, health considerations..."></textarea></div>
+        </form>
+
+        <div class="mt-8 flex gap-4">
+          <button onclick="goToStep(2)" class="btn-outline">Back</button>
+          <button onclick="goToStep(4)" class="btn-primary">Continue to Payment <i class="fa-solid fa-arrow-right ml-2"></i></button>
+        </div>
+      </div>
+
+      <!-- STEP 4: Payment -->
+      <div class="booking-panel" id="panel-4">
+        <div class="flex items-center gap-3 mb-6">
+          <button onclick="goToStep(3)" class="text-warm-gray hover:text-sage transition-colors bg-transparent border-none cursor-pointer text-base"><i class="fa-solid fa-arrow-left"></i></button>
+          <div>
+            <h2 class="font-display text-3xl text-charcoal">Payment</h2>
+            <p class="text-warm-gray text-sm">Secure payment to complete your booking.</p>
+          </div>
+        </div>
+
+        <div class="bg-ivory border border-gray-200 p-5 mb-6">
+          <p class="text-xs text-warm-gray uppercase tracking-wider mb-4">Order Summary</p>
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-sm text-charcoal" id="payment-service-name">Service</span>
+            <span class="text-sm font-medium text-charcoal" id="payment-service-price">$0</span>
+          </div>
+          <div class="border-t border-gray-200 pt-3 mt-3 flex items-center justify-between">
+            <span class="font-medium text-charcoal">Total Due</span>
+            <span class="font-display text-2xl text-charcoal" id="payment-total">$0</span>
+          </div>
+        </div>
+
+        <!-- Stripe Elements mounts here once backend provides payment intent endpoint -->
+        <div class="bg-white border border-gray-100 p-6 mb-4">
+          <div class="flex items-center gap-2 mb-4">
+            <i class="fa-solid fa-lock text-sage text-sm"></i>
+            <p class="text-xs text-warm-gray">Secure payment powered by Stripe</p>
+          </div>
+          <!-- TODO: Replace with Stripe Elements once backend provides /payments/intent endpoint -->
+          <!-- const stripe = Stripe(PUBLISHABLE_KEY); const elements = stripe.elements(); -->
+          <!-- const card = elements.create('card'); card.mount('#stripe-card-element'); -->
+          <div id="stripe-card-element" class="bg-mist/20 border border-dashed border-mist p-5 text-center mb-4">
+            <i class="fa-solid fa-credit-card text-sage text-2xl mb-2 block"></i>
+            <p class="text-sm text-charcoal font-medium mb-1">Stripe Payment Integration</p>
+            <p class="text-xs text-warm-gray">Waiting on backend payment intent endpoint</p>
+          </div>
+        </div>
+
+        <p class="text-xs text-warm-gray flex items-center gap-2 mb-6">
+          <i class="fa-solid fa-shield-halved text-sage"></i>
+          Your payment details are encrypted and processed securely by Stripe.
+        </p>
+
+        <div class="flex flex-col sm:flex-row gap-4">
+          <button onclick="goToStep(3)" class="btn-outline">Back</button>
+          <button onclick="submitBooking()" class="btn-ember flex items-center justify-center gap-2 flex-1" id="pay-btn">
+            <i class="fa-solid fa-lock text-sm"></i> Confirm & Pay <span id="pay-amount">$0</span>
+          </button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <footer class="bg-charcoal text-off-white py-10 mt-10">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <span class="font-display text-lg text-off-white/80">Breathe Easy Stretch</span>
+      <p class="text-off-white/30 text-xs">Questions? <a href="index.html#contact" class="text-mist/60 hover:text-mist transition-colors underline">Contact us</a></p>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+  <script src="/src/js/toast.js"></script>
+  <script src="/src/js/api.js"></script>
+  <script src="/src/js/public-services.js"></script>
+  <script src="/src/js/public-booking.js"></script>
+</body>
+</html>

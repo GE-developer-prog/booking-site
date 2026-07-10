@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Dashboard — Breathe Easy Stretch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/src/css/main.css" />
+</head>
+<body class="dash-body">
+
+  <!-- Sidebar -->
+  <aside class="dash-sidebar" id="sidebar">
+    <div class="p-5 border-b border-white/5">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full border border-sage flex items-center justify-center">
+          <i class="fa-solid fa-wind text-sage text-xs"></i>
+        </div>
+        <div>
+          <p class="text-off-white text-sm font-medium leading-none" id="sidebar-business-name">Breathe Easy</p>
+          <p class="text-slate-500 text-xs mt-0.5">Admin Panel</p>
+        </div>
+      </div>
+    </div>
+
+    <nav class="flex-1 overflow-y-auto p-3 space-y-1 mt-2">
+      <button class="dash-nav-item active" onclick="switchPanel('overview')">
+        <i class="fa-solid fa-chart-pie w-4"></i> Overview
+      </button>
+      <button class="dash-nav-item" onclick="switchPanel('bookings')">
+        <i class="fa-solid fa-calendar-check w-4"></i> Bookings
+        <span class="ml-auto bg-ember text-white text-xs px-2 py-0.5 rounded-full" id="pending-badge" style="display:none;">0</span>
+      </button>
+      <button class="dash-nav-item" onclick="switchPanel('services')">
+        <i class="fa-solid fa-hand-sparkles w-4"></i> Services
+      </button>
+      <button class="dash-nav-item" onclick="switchPanel('availability')">
+        <i class="fa-solid fa-calendar-days w-4"></i> Availability
+      </button>
+      <button class="dash-nav-item" onclick="switchPanel('contact-emails')">
+        <i class="fa-solid fa-envelope w-4"></i> Contact Emails
+      </button>
+      <div class="pt-4 mt-4 border-t border-white/5">
+        <button class="dash-nav-item" onclick="switchPanel('settings')">
+          <i class="fa-solid fa-gear w-4"></i> Account Settings
+        </button>
+        <a href="index.html" target="_blank" class="dash-nav-item">
+          <i class="fa-solid fa-arrow-up-right-from-square w-4"></i> View Site
+        </a>
+        <button class="dash-nav-item" onclick="handleAdminLogout()">
+          <i class="fa-solid fa-right-from-bracket w-4"></i> Log Out
+        </button>
+      </div>
+    </nav>
+
+    <div class="p-4 border-t border-white/5">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-sage/30 flex items-center justify-center text-mist text-xs font-semibold">A</div>
+        <div>
+          <p class="text-slate-300 text-xs font-medium" id="sidebar-user-name">Admin</p>
+          <p class="text-slate-600 text-xs">Logged in</p>
+        </div>
+      </div>
+    </div>
+  </aside>
+
+  <!-- Main -->
+  <div class="dash-main" id="dash-main">
+
+    <!-- Top Bar -->
+    <div class="dash-topbar">
+      <div class="flex items-center gap-4">
+        <button onclick="toggleSidebar()" class="text-slate-400 hover:text-slate-200 transition-colors md:hidden bg-transparent border-none cursor-pointer">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+        <h2 class="text-slate-200 font-medium text-sm" id="panel-title">Overview</h2>
+      </div>
+      <div class="w-8 h-8 rounded-full bg-sage/30 flex items-center justify-center text-mist text-xs font-semibold">A</div>
+    </div>
+
+    <div class="p-6">
+
+      <!-- OVERVIEW -->
+      <div class="dash-panel active" id="panel-overview">
+        <div class="mb-6">
+          <h3 class="text-slate-200 text-lg font-medium">Dashboard Overview</h3>
+          <p class="text-slate-500 text-sm mt-0.5" id="overview-date">—</p>
+        </div>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-4 mb-8">
+          <div class="dash-stat">
+            <div class="flex items-center justify-between mb-3"><p class="text-slate-500 text-xs uppercase tracking-wider">Today's Bookings</p><i class="fa-solid fa-calendar text-sage text-sm"></i></div>
+            <p class="text-2xl font-semibold text-slate-100" id="stat-today">—</p>
+          </div>
+          <div class="dash-stat">
+            <div class="flex items-center justify-between mb-3"><p class="text-slate-500 text-xs uppercase tracking-wider">This Week</p><i class="fa-solid fa-chart-line text-ember text-sm"></i></div>
+            <p class="text-2xl font-semibold text-slate-100" id="stat-week">—</p>
+          </div>
+          <div class="dash-stat">
+            <div class="flex items-center justify-between mb-3"><p class="text-slate-500 text-xs uppercase tracking-wider">Monthly Revenue</p><i class="fa-solid fa-dollar-sign text-green-400 text-sm"></i></div>
+            <p class="text-2xl font-semibold text-slate-100" id="stat-revenue">—</p>
+          </div>
+          <div class="dash-stat">
+            <div class="flex items-center justify-between mb-3"><p class="text-slate-500 text-xs uppercase tracking-wider">Pending</p><i class="fa-solid fa-clock text-yellow-400 text-sm"></i></div>
+            <p class="text-2xl font-semibold text-slate-100" id="stat-pending">—</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <button onclick="switchPanel('services')"       class="bg-[#161b27] border border-white/5 rounded-xl p-4 text-left hover:border-sage/30 transition-colors cursor-pointer"><i class="fa-solid fa-plus text-sage mb-3 block"></i><p class="text-slate-300 text-xs font-medium">Manage Services</p></button>
+          <button onclick="switchPanel('availability')"   class="bg-[#161b27] border border-white/5 rounded-xl p-4 text-left hover:border-sage/30 transition-colors cursor-pointer"><i class="fa-solid fa-calendar-plus text-ember mb-3 block"></i><p class="text-slate-300 text-xs font-medium">Set Availability</p></button>
+          <button onclick="switchPanel('bookings')"       class="bg-[#161b27] border border-white/5 rounded-xl p-4 text-left hover:border-sage/30 transition-colors cursor-pointer"><i class="fa-solid fa-list-check text-blue-400 mb-3 block"></i><p class="text-slate-300 text-xs font-medium">View Bookings</p></button>
+          <button onclick="switchPanel('contact-emails')" class="bg-[#161b27] border border-white/5 rounded-xl p-4 text-left hover:border-sage/30 transition-colors cursor-pointer"><i class="fa-solid fa-envelope text-mist mb-3 block"></i><p class="text-slate-300 text-xs font-medium">Contact Emails</p></button>
+        </div>
+      </div>
+
+      <!-- BOOKINGS -->
+      <div class="dash-panel" id="panel-bookings">
+        <div class="mb-6"><h3 class="text-slate-200 text-lg font-medium">Bookings</h3><p class="text-slate-500 text-xs mt-0.5">All client bookings</p></div>
+        <div class="bg-[#161b27] border border-white/5 rounded-xl overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="dash-table">
+              <thead><tr><th>Client</th><th>Phone</th><th>Service</th><th>Date & Time</th><th>Price</th><th>Status</th><th>Last Session</th><th>Actions</th></tr></thead>
+              <tbody id="bookings-table-body"></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+
+      <!-- SERVICES -->
+      <div class="dash-panel" id="panel-services">
+        <div class="flex items-center justify-between mb-6">
+          <div><h3 class="text-slate-200 text-lg font-medium">Services</h3><p class="text-slate-500 text-xs mt-0.5">Manage what clients can book</p></div>
+          <button onclick="openCreateServiceModal()" class="dash-btn-ember flex items-center gap-2"><i class="fa-solid fa-plus text-xs"></i> Add Service</button>
+        </div>
+        <div class="grid md:grid-cols-3 gap-4" id="services-list"></div>
+      </div>
+
+      <!-- AVAILABILITY -->
+      <div class="dash-panel" id="panel-availability">
+        <div class="mb-6"><h3 class="text-slate-200 text-lg font-medium">Availability</h3><p class="text-slate-500 text-xs mt-0.5">Publish time slots for clients to book</p></div>
+        <div class="bg-[#161b27] border border-white/5 rounded-xl p-5 mb-6">
+          <p class="text-slate-300 text-sm font-medium mb-4">Add Availability</p>
+          <form id="availability-form">
+            <div class="grid md:grid-cols-3 gap-4 mb-4">
+              <div><label class="dash-label">Date</label><input type="date" class="dash-input" id="avail-date" required /></div>
+              <div>
+                <label class="dash-label">Timezone</label>
+                <select class="dash-input" id="avail-timezone" required>
+                  <option value="">Select timezone</option>
+                  <option value="Africa/Lagos">Africa/Lagos</option>
+                  <option value="UTC">UTC</option>
+                  <option value="America/New_York">America/New_York</option>
+                  <option value="America/Los_Angeles">America/Los_Angeles</option>
+                  <option value="Europe/London">Europe/London</option>
+                </select>
+              </div>
+              <div><label class="dash-label">Slots Per Time</label><input type="number" class="dash-input" id="avail-slot-count" placeholder="4" min="1" required /></div>
+            </div>
+            <label class="dash-label">Times</label>
+            <div id="time-slot-rows" class="mb-3"></div>
+            <button type="button" onclick="addTimeSlotRow()" class="dash-btn-ghost text-xs mb-4"><i class="fa-solid fa-plus mr-1"></i> Add Time</button>
+            <div><button type="submit" onclick="saveAvailability(event)" class="dash-btn-primary"><i class="fa-solid fa-floppy-disk mr-2"></i>Publish Availability</button></div>
+          </form>
+        </div>
+        <div><p class="text-slate-300 text-sm font-medium mb-4">Published Availability</p><div id="availability-list"></div></div>
+      </div>
+
+      <!-- CONTACT EMAILS -->
+      <div class="dash-panel" id="panel-contact-emails">
+        <div class="mb-6"><h3 class="text-slate-200 text-lg font-medium">Contact Emails</h3><p class="text-slate-500 text-xs mt-0.5">These addresses receive booking and contact form notifications</p></div>
+        <div class="bg-[#161b27] border border-white/5 rounded-xl p-5 mb-6 max-w-lg">
+          <p class="text-slate-300 text-sm font-medium mb-4">Add Email</p>
+          <form id="contact-email-form" onsubmit="addContactEmail(event)" class="flex gap-3">
+            <input type="email" class="dash-input flex-1" id="new-contact-email" placeholder="hello@breatheasystretch.com" required />
+            <button type="submit" class="dash-btn-ember whitespace-nowrap">Add Email</button>
+          </form>
+        </div>
+        <div class="max-w-lg" id="contact-emails-list"></div>
+      </div>
+
+      <!-- SETTINGS -->
+      <div class="dash-panel" id="panel-settings">
+        <div class="mb-6"><h3 class="text-slate-200 text-lg font-medium">Account Settings</h3><p class="text-slate-500 text-xs mt-0.5">Update your admin account information</p></div>
+        <div class="max-w-xl space-y-6">
+          <!-- All admins list -->
+          <div class="bg-[#161b27] border border-white/5 rounded-xl p-5">
+            <p class="text-slate-300 text-sm font-medium mb-4">All Admins</p>
+            <div id="admin-list"><p class="text-slate-500 text-xs">Loading...</p></div>
+          </div>
+          <!-- Update form -->
+          <div class="bg-[#161b27] border border-white/5 rounded-xl p-5">
+            <p class="text-slate-300 text-sm font-medium mb-4">Update Account</p>
+            <form id="settings-form" onsubmit="updateAdminInfo(event)" class="space-y-4">
+              <div><label class="dash-label">Name</label><input type="text" class="dash-input" id="setting-name" placeholder="Admin User" /></div>
+              <div><label class="dash-label">Business Name</label><input type="text" class="dash-input" id="setting-business-name" placeholder="Breathe Easy Stretch" /></div>
+              <div><label class="dash-label">Username</label><input type="text" class="dash-input" id="setting-username" placeholder="admin" /></div>
+              <div><label class="dash-label">New Password (leave blank to keep current)</label><input type="password" class="dash-input" id="setting-new-password" placeholder="••••••••" /></div>
+              <div class="pt-3 border-t border-white/5">
+                <label class="dash-label">Confirm Current Password *</label>
+                <input type="password" class="dash-input" id="setting-confirm-password" placeholder="Required to save any changes" required />
+              </div>
+              <button type="submit" class="dash-btn-primary">Save Changes</button>
+            </form>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- Service Modal -->
+  <div class="dash-modal-overlay" id="service-modal">
+    <div class="dash-modal">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-slate-200 font-medium" id="service-modal-title">Add New Service</h3>
+        <button onclick="closeServiceModal()" class="text-slate-500 hover:text-slate-300 bg-transparent border-none cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <!-- Service Modal (updated section only) -->
+      <form id="service-form" onsubmit="saveService(event)" class="space-y-4">
+        <input type="hidden" id="service-edit-id" value="" />
+        <div><label class="dash-label">Title *</label><input type="text" class="dash-input" id="svc-title" placeholder="Deep Tissue Stretch Session" required /></div>
+        <div><label class="dash-label">Description *</label><textarea class="dash-input" id="svc-description" rows="3" placeholder="What does this service include?" required></textarea></div>
+        <div class="grid grid-cols-2 gap-4">
+          <div><label class="dash-label">Price ($) *</label><input type="number" step="0.01" class="dash-input" id="svc-price" placeholder="150.00" min="0" required /></div>
+          <div>
+            <label class="dash-label">Type *</label>
+            <select class="dash-input" id="svc-type" required>
+              <option value="">Select type</option>
+              <option value="personal">Personal</option>
+              <option value="corporate">Corporate</option>
+            </select>
+          </div>
+        </div>
+        <div><label class="dash-label">Duration *</label><input type="text" class="dash-input" id="svc-duration" placeholder="30-60 min" required /></div>
+        <div>
+          <label class="dash-label">Service Image *</label>
+          <input type="file" class="dash-input" id="svc-picture" accept="image/*" onchange="previewServiceImage(this)" />
+          <div id="service-image-preview"></div>
+        </div>
+        <div class="flex items-center gap-3 pt-2">
+          <button type="submit" class="dash-btn-ember">Save Service</button>
+          <button type="button" onclick="closeServiceModal()" class="dash-btn-ghost">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Booking Detail Modal -->
+  <div class="dash-modal-overlay" id="booking-modal">
+    <div class="dash-modal">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-slate-200 font-medium">Booking Details</h3>
+        <button onclick="closeBookingModal()" class="text-slate-500 hover:text-slate-300 bg-transparent border-none cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div id="booking-modal-content"></div>
+    </div>
+  </div>
+
+  <!-- Reject Modal -->
+  <div class="dash-modal-overlay" id="reject-modal-overlay">
+    <div class="dash-modal" style="max-width:440px;">
+      <div class="flex items-center justify-between mb-5">
+        <h3 class="text-slate-200 font-medium">Reject Booking</h3>
+        <button onclick="closeRejectModal()" class="text-slate-500 hover:text-slate-300 bg-transparent border-none cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <label class="dash-label">Reason for rejection *</label>
+      <textarea id="reject-note-input" class="dash-input" rows="3" placeholder="This will be emailed to the client..."></textarea>
+      <div class="flex gap-3 mt-4">
+        <button onclick="submitReject()" class="dash-btn-danger flex-1 py-2.5">Confirm Rejection</button>
+        <button onclick="closeRejectModal()" class="dash-btn-ghost flex-1">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <div id="sidebar-overlay" class="hidden fixed inset-0 bg-black/50 z-40 md:hidden" onclick="toggleSidebar()"></div>
+
+  <script src="/src/js/toast.js"></script>
+  <script src="/src/js/api.js"></script>
+  <script src="/src/js/admin-auth.js"></script>
+  <script src="/src/js/admin-bookings.js"></script>
+  <script src="/src/js/admin-services.js"></script>
+  <script src="/src/js/admin-availability.js"></script>
+  <script src="/src/js/admin-contact-emails.js"></script>
+  <script src="/src/js/admin-account.js"></script>
+  <script src="/src/js/dashboard-app.js"></script>
+</body>
+</html>

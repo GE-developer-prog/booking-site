@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services — Breathe Easy Stretch</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/src/css/main.css" />
+</head>
+<body class="bg-off-white">
+
+  <div id="page-loader"><p class="loader-logo  text-center lg:text-[28px] md:text-[28px] text-[17px]">Breathe Easy Stretch</p><div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div></div>
+  <a href="booking.html" id="float-book"><i class="fa-solid fa-calendar-plus text-sm"></i> Book Now</a>
+
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 bg-sage transition-all duration-500">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3 no-underline">
+        <div class="w-8 h-8 rounded-full border-2 border-mist flex items-center justify-center"><i class="fa-solid fa-wind text-mist text-xs"></i></div>
+        <span class="font-display lg:text-[21px] md:text-[20px] text-[16px] text-off-white tracking-wide">Breathe Easy Stretch</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="nav-link">Home</a>
+        <a href="services.html" class="nav-link active">Services</a>
+        <a href="booking.html" class="nav-link">Book Now</a>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="index.html#contact" class="nav-link">Contact</a>
+      </div>
+      <!-- <a href="booking.html" class="hidden md:block btn-ember text-sm px-6 py-3">Book a Session</a> -->
+      <button id="menu-toggle" class="md:hidden text-off-white text-xl bg-transparent border-none cursor-pointer"><i class="fa-solid fa-bars"></i></button>
+    </div>
+  </nav>
+
+  <div class="mobile-menu" id="mobile-menu">
+    <button id="menu-close" class="absolute top-6 right-6 text-mist text-2xl bg-transparent border-none cursor-pointer"><i class="fa-solid fa-xmark"></i></button>
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="services.html" class="mobile-nav-link">Services</a>
+    <a href="booking.html" class="mobile-nav-link">Book Now</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="index.html#contact" class="mobile-nav-link">Contact</a>
+  </div>
+
+  <!-- Page Hero -->
+  <section class="pt-32 pb-20 bg-sage text-off-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="max-w-2xl">
+        <p class="text-mist text-xs tracking-widest uppercase mb-4 reveal">Personal & Corporate</p>
+        <h1 class="font-display text-5xl md:text-6xl leading-tight mb-5 reveal">Services designed<br/><em>for real life</em></h1>
+        <p class="text-off-white/65 text-lg font-light leading-relaxed reveal">Every session is mobile — we come to you. Browse below and book the moment you're ready.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Tabs -->
+  <div class="bg-white border-b border-gray-100 sticky top-20 z-40">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center">
+      <button class="track-tab active" id="tab-all" onclick="filterServices('')">All</button>
+      <button class="track-tab" id="tab-personal" onclick="filterServices('personal')">Personal</button>
+      <button class="track-tab" id="tab-corporate" onclick="filterServices('corporate')">Corporate</button>
+    </div>
+  </div>
+
+  <!-- Services Grid -->
+  <section class="py-20 bg-off-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-3 gap-6" id="services-grid">
+        <!-- Loaded dynamically from GET /admin/services/list -->
+        <div class="col-span-full text-center py-16 text-warm-gray">
+          <i class="fa-solid fa-spinner fa-spin text-3xl mb-4 block text-sage"></i>
+          <p>Loading services...</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="py-20 bg-ember text-white text-center">
+    <div class="max-w-2xl mx-auto px-6 reveal">
+      <h2 class="font-display text-4xl md:text-5xl mb-4">Ready to feel the difference?</h2>
+      <p class="text-white/75 mb-8 leading-relaxed">Pick a time that works for you. We'll handle the rest.</p>
+      <a href="booking.html" class="inline-block bg-white text-ember font-medium text-sm tracking-widest uppercase px-10 py-4 hover:bg-ivory transition-colors">Book Your Session</a>
+    </div>
+  </section>
+
+  <footer class="bg-charcoal text-off-white py-12">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex flex-col md:flex-row justify-between items-center gap-4">
+      <span class="font-display text-lg text-off-white/80">Breathe Easy Stretch</span>
+      <p class="text-off-white/30 text-xs">© <span id="year"></span> Breathe Easy Stretch. All rights reserved. Designed & Developed by <a href="https://gedeveloper.netlify.app" class="no-underline text-shadow-off-white/30 hover:text-blue-600">GE. developer</a> and <a href="https://www.dconco.tech" class="no-underline text-shadow-off-white/30 hover:text-pink-600">@dconco</a></p>
+      <a href="booking.html" class="btn-ember text-xs px-5 py-3">Book Now</a>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+  <script src="/src/js/toast.js"></script>
+  <script src="/src/js/api.js"></script>
+  <script src="/src/js/public-services.js"></script>
+  <script>
+    // import { loadServices, renderServiceCards } from '/src/js/public-services.js'
+
+    // let currentFilter = ''
+
+    // async function refreshServices() {
+    //   const grid = document.getElementById('services-grid')
+    //   grid.innerHTML = `<div class="col-span-full text-center py-16 text-warm-gray"><i class="fa-solid fa-spinner fa-spin text-3xl mb-4 block text-sage"></i><p>Loading services...</p></div>`
+    //   const services = await loadServices('services-grid', currentFilter)
+    //   renderServiceCards(services, 'services-grid')
+    // }
+
+    // window.filterServices = function(type) {
+    //   currentFilter = type
+    //   document.getElementById('tab-all').classList.toggle('active', type === '')
+    //   document.getElementById('tab-personal').classList.toggle('active', type === 'personal')
+    //   document.getElementById('tab-corporate').classList.toggle('active', type === 'corporate')
+    //   refreshServices()
+    // }
+
+    // refreshServices()
+
+//     let currentFilter = ''
+
+// async function refreshServices() {
+//   const grid = document.getElementById('services-grid')
+
+//   grid.innerHTML = `
+//     <div class="col-span-full text-center py-16 text-warm-gray">
+//       <i class="fa-solid fa-spinner fa-spin text-3xl mb-4 block text-sage"></i>
+//       <p>Loading services...</p>
+//     </div>
+//   `
+
+//   const services = await loadServices('services-grid', currentFilter)
+//   renderServiceCards(services, 'services-grid')
+// }
+
+// window.filterServices = function (type) {
+//   currentFilter = type
+
+//   document.getElementById('tab-all').classList.toggle('active', type === '')
+//   document.getElementById('tab-personal').classList.toggle('active', type === 'personal')
+//   document.getElementById('tab-corporate').classList.toggle('active', type === 'corporate')
+
+//   void refreshServices()
+// }
+
+// void refreshServices()
+var currentFilter = '';
+
+    function refreshServices() {
+      var grid = document.getElementById('services-grid');
+      grid.innerHTML = '<div class="col-span-full text-center py-16 text-warm-gray"><i class="fa-solid fa-spinner fa-spin text-3xl mb-4 block text-sage"></i><p>Loading services...</p></div>';
+      window.loadServices('services-grid', currentFilter).then(function(services) {
+        window.renderServiceCards(services, 'services-grid');
+      });
+    }
+
+    window.filterServices = function(type) {
+      currentFilter = type;
+      document.getElementById('tab-all').classList.toggle('active',       type === '');
+      document.getElementById('tab-personal').classList.toggle('active',  type === 'personal');
+      document.getElementById('tab-corporate').classList.toggle('active', type === 'corporate');
+      refreshServices();
+    };
+
+    window.addEventListener('DOMContentLoaded', function() {
+      refreshServices();
+    });
+  </script>
+</body>
+</html>

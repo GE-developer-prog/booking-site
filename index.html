@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Breathe Easy Stretch — Mobile Stretch & Meditation</title>
+  <meta name="description" content="Mobile stretch therapy and guided meditation delivered to your door. Personal and corporate packages." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <link rel="stylesheet" href="/src/css/main.css" />
+</head>
+<body class="bg-off-white">
+
+  <!-- Page Loader -->
+  <div id="page-loader">
+    <p class="loader-logo text-center lg:text-[28px] md:text-[28px] text-[17px]">Breathe Easy Stretch</p>
+    <div class="loader-bar"><div class="loader-fill" id="loader-fill"></div></div>
+  </div>
+
+  <!-- Floating Book Button -->
+  <a href="booking.html" id="float-book">
+    <i class="fa-solid fa-calendar-plus text-sm"></i> Book Now
+  </a>
+
+  <!-- Nav -->
+  <nav id="navbar" class="fixed top-0 left-0 right-0 z-50 transition-all duration-500" style="background:transparent;">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10 flex items-center justify-between h-20">
+      <a href="index.html" class="flex items-center gap-3 no-underline">
+        <div class="w-8 h-8 rounded-full border-2 border-mist flex items-center justify-center">
+          <i class="fa-solid fa-wind text-mist text-xs"></i>
+        </div>
+        <span class="font-display lg:text-[21px] md:text-[20px] text-[16px] text-off-white tracking-wide">Breathe Easy Stretch</span>
+      </a>
+      <div class="hidden md:flex items-center gap-10">
+        <a href="index.html" class="nav-link active">Home</a>
+        <a href="services.html" class="nav-link">Services</a>
+        <a href="booking.html" class="nav-link">Book Now</a>
+        <a href="#about" class="nav-link">About</a>
+        <a href="#contact" class="nav-link">Contact</a>
+      </div>
+      <!-- <a href="booking.html" class="hidden md:block btn-ember text-sm px-6 py-3">Book a Session</a> -->
+      <button id="menu-toggle" class="md:hidden text-off-white text-xl z-50 relative bg-transparent border-none cursor-pointer">
+        <i class="fa-solid fa-bars" id="menu-icon"></i>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Mobile Menu -->
+  <div class="mobile-menu" id="mobile-menu">
+    <button id="menu-close" class="absolute top-6 right-6 text-mist text-2xl bg-transparent border-none cursor-pointer">
+      <i class="fa-solid fa-xmark"></i>
+    </button>
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="services.html" class="mobile-nav-link">Services</a>
+    <a href="booking.html" class="mobile-nav-link">Book Now</a>
+    <a href="#about" class="mobile-nav-link">About</a>
+    <a href="#contact" class="mobile-nav-link">Contact</a>
+    <a href="booking.html" class="btn-ember mt-4">Book a Session</a>
+  </div>
+
+  <!-- Hero Slider -->
+  <section class="relative h-screen min-h-[800px] overflow-hidden">
+    <div id="hero-slider" class="absolute inset-0">
+      <div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=1800&q=80')"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=1800&q=80')"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1588286840104-8957b019727f?w=1800&q=80')"></div>
+      <div class="slide" style="background-image:url('https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=1800&q=80')"></div>
+    </div>
+    <div class="absolute inset-0 bg-gradient-to-r from-sage/90 via-sage/60 to-transparent"></div>
+    <div class="absolute inset-0 bg-gradient-to-t from-charcoal/40 to-transparent"></div>
+    <div class="relative z-10 h-full flex items-center">
+      <div class="max-w-7xl mx-auto px-6 lg:px-10 w-full">
+        <div class="max-w-2xl">
+          <p id="hero-eyebrow" class="text-mist text-xs tracking-widest uppercase mb-6 opacity-0">Mobile Wellness · We Come to You</p>
+          <h1 id="hero-headline" class="font-display md:text-7xl lg:text-7xl text-4xl text-off-white leading-tight mb-6 opacity-0">
+            Move better.<br/><em class="not-italic text-mist">Breathe deeper.</em><br/>Feel alive.
+          </h1>
+          <p id="hero-sub" class="text-off-white/75 lg:text-lg md:text-lg text-sm font-light leading-relaxed mb-10 max-w-lg opacity-0">
+            Professional stretch therapy and guided meditation that arrives at your door — for individuals and corporate teams.
+          </p>
+          <div id="hero-ctas" class="flex flex-wrap gap-4 opacity-0">
+            <a href="booking.html" class="btn-ember">Book Your Session</a>
+            <a href="services.html" class="btn-outline" style="color:#FAF8F4;border-color:rgba(250,248,244,.5);">View Services</a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-3 z-10">
+      <div class="slide-dot active" data-index="0"></div>
+      <div class="slide-dot" data-index="1"></div>
+      <div class="slide-dot" data-index="2"></div>
+      <div class="slide-dot" data-index="3"></div>
+    </div>
+    <!-- <button id="prev-slide" class="absolute left-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 border border-white/30 flex items-center justify-center text-white/70 hover:text-white hover:border-white/60 transition-all bg-transparent cursor-pointer">
+      <i class="fa-solid fa-chevron-left text-sm"></i>
+    </button>
+    <button id="next-slide" class="absolute right-6 top-1/2 -translate-y-1/2 z-10 w-11 h-11 border border-white/30 flex items-center justify-center text-white/70 hover:text-white hover:border-white/60 transition-all bg-transparent cursor-pointer">
+      <i class="fa-solid fa-chevron-right text-sm"></i> -->
+    </button>
+  </section>
+
+  <!-- Track Selector -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="max-w-xl mb-16 reveal">
+        <p class="text-ember text-xs tracking-widest uppercase mb-3">Who We Serve</p>
+        <h2 class="font-display text-4xl md:text-5xl text-charcoal leading-tight">Choose your<br/><em>wellness path</em></h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="track-card reveal" onclick="window.location.href='booking.html?track=personal'">
+          <div class="track-icon text-sage text-3xl mb-5"><i class="fa-solid fa-person-rays"></i></div>
+          <h3 class="font-display text-3xl mb-3 text-charcoal">Personal</h3>
+          <p class="text-warm-gray text-sm leading-relaxed mb-6">One-on-one mobile stretch and meditation sessions tailored to your body, your schedule, your space.</p>
+          <div class="track-link flex items-center gap-2 text-xs tracking-widest uppercase text-sage font-medium">
+            <span>Book Personal Session</span><i class="fa-solid fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+        <div class="track-card reveal" onclick="window.location.href='booking.html?track=corporate'">
+          <div class="track-icon text-sage text-3xl mb-5"><i class="fa-solid fa-building-user"></i></div>
+          <h3 class="font-display text-3xl mb-3 text-charcoal">Corporate</h3>
+          <p class="text-warm-gray text-sm leading-relaxed mb-6">On-site wellness programs for groups of 5–15 at your business location. Stretch, meditation, or both.</p>
+          <div class="track-link flex items-center gap-2 text-xs tracking-widest uppercase text-sage font-medium">
+            <span>Book Corporate Session</span><i class="fa-solid fa-arrow-right text-xs"></i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Services -->
+  <section class="py-24 bg-off-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-6">
+        <div class="reveal">
+          <p class="text-ember text-xs tracking-widest uppercase mb-3">What We Offer</p>
+          <h2 class="font-display text-4xl md:text-5xl text-charcoal leading-tight">Services built<br/><em>around your life</em></h2>
+        </div>
+        <a href="services.html" class="reveal text-sage text-sm font-medium flex items-center gap-2 hover:text-ember transition-colors no-underline">
+          View all services <i class="fa-solid fa-arrow-right text-xs"></i>
+        </a>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="service-card reveal">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1599901860904-17e6ed7083a0?w=800&q=80" alt="Assisted Stretching" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="p-7">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-warm-gray uppercase tracking-wider">Package 1</span>
+              <span class="text-xs text-ember font-medium">from $65</span>
+            </div>
+            <h3 class="font-display text-2xl mt-2 mb-3">Assisted Stretch</h3>
+            <p class="text-warm-gray text-sm leading-relaxed mb-5">Choose 30, 45, or 60 minutes. Add 10 or 20 minutes of meditation or breathing for a complete session.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+              <span class="text-xs text-warm-gray flex items-center gap-1.5"><i class="fa-regular fa-clock"></i> 30–60 min</span>
+              <a href="booking.html?service=pkg1" class="text-xs text-sage font-medium flex items-center gap-1.5 hover:text-ember transition-colors no-underline">Book <i class="fa-solid fa-arrow-right text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1602192509154-0b900ee1f851?w=800&q=80" alt="Meditation" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="p-7">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-warm-gray uppercase tracking-wider">Package 2</span>
+              <span class="text-xs text-ember font-medium">from $50</span>
+            </div>
+            <h3 class="font-display text-2xl mt-2 mb-3">Meditation & Breathwork</h3>
+            <p class="text-warm-gray text-sm leading-relaxed mb-5">15, 30, or 45 minutes of guided meditation or breathwork. Add 15 or 30 minutes of stretching.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+              <span class="text-xs text-warm-gray flex items-center gap-1.5"><i class="fa-regular fa-clock"></i> 15–45 min</span>
+              <a href="booking.html?service=pkg2" class="text-xs text-sage font-medium flex items-center gap-1.5 hover:text-ember transition-colors no-underline">Book <i class="fa-solid fa-arrow-right text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="service-card reveal">
+          <div class="h-52 overflow-hidden">
+            <img src="https://images.unsplash.com/photo-1573590330099-d6c7355ec595?w=800&q=80" alt="Group Session" class="w-full h-full object-cover transition-transform duration-700 hover:scale-105" />
+          </div>
+          <div class="p-7">
+            <div class="flex items-center justify-between mb-1">
+              <span class="text-xs text-warm-gray uppercase tracking-wider">Package 3 · Corporate</span>
+              <span class="text-xs text-ember font-medium">Custom pricing</span>
+            </div>
+            <h3 class="font-display text-2xl mt-2 mb-3">Group Session</h3>
+            <p class="text-warm-gray text-sm leading-relaxed mb-5">Same offerings for groups of 5–15 at your business location. Pricing discussed based on services selected.</p>
+            <div class="flex items-center justify-between pt-4 border-t border-gray-100">
+              <span class="text-xs text-warm-gray flex items-center gap-1.5"><i class="fa-solid fa-users"></i> 5–15 people</span>
+              <a href="booking.html?track=corporate" class="text-xs text-sage font-medium flex items-center gap-1.5 hover:text-ember transition-colors no-underline">Enquire <i class="fa-solid fa-arrow-right text-xs"></i></a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About -->
+  <section id="about" class="py-24 bg-sage text-off-white overflow-hidden">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="reveal-left">
+          <p class="text-mist text-xs tracking-widest uppercase mb-4">Our Approach</p>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">Wellness that<br/><em>moves with you</em></h2>
+          <p class="text-off-white/70 leading-relaxed mb-5">We believe recovery and mental clarity shouldn't be reserved for those with time to spare. Breathe Easy brings certified stretch therapy and guided meditation directly to where you are.</p>
+          <p class="text-off-white/70 leading-relaxed mb-10">Whether you're an individual or a company investing in your team's wellbeing, we build every session around your specific needs.</p>
+          <div class="grid grid-cols-3 gap-6 pt-6 border-t border-white/15">
+            <div>
+              <span class="counter-num lg:text-[48px] md:text-[48px] text-[30px]" data-target="500">0</span>
+              <p class="text-xs text-off-white/50 mt-1 uppercase tracking-wide lg:text-[12px] md:text-[12px] text-[9px]">Sessions Done</p>
+            </div>
+            <div>
+              <span class="counter-num lg:text-[48px] md:text-[48px] text-[30px]" data-target="98" data-suffix="%">0</span>
+              <p class="text-xs text-off-white/50 mt-1 uppercase tracking-wide lg:text-[12px] md:text-[12px] text-[9px]">Satisfaction</p>
+            </div>
+            <div>
+              <span class="counter-num lg:text-[48px] md:text-[48px] text-[30px]" data-target="50">0</span>
+              <p class="text-xs text-off-white/50 mt-1 uppercase tracking-wide g:text-[12px] md:text-[12px] text-[10px]">Corporate Clients</p>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right relative">
+          <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=900&q=80" alt="Mobile wellness session" class="w-full object-cover parallax-img" style="height:480px;" />
+          <div class="absolute -bottom-6 -left-6 bg-ember p-6 hidden md:block">
+            <p class="font-display text-2xl text-white">Mobile Service</p>
+            <p class="text-white/75 text-xs mt-1">We come to you, anywhere</p>
+          </div>
+        </div>
+      </div>
+      <h1 class="font-display text-5xl md:text-6xl leading-tight mb-6 my-25 reveal"><em>Meet Your Wellness Expert</em></h1>
+       <p class="text-off-white/70 text-lg font-light leading-relaxed reveal">Welcome to your wellness journey! I am Ty Hall, a dedicated wellness provider specializing in personalized, mobile stretch and meditation sessions designed to restore balance, enhance performance, and improve your everyday quality of life. Whether you are looking to elevate individual well-being or bring life-changing wellness benefits to your corporate team, I deliver tailored experiences right to your location. With over 20 years of experience as a certified yoga instructor and meditation teacher, I have dedicated two decades to helping people cultivate mindfulness, reduce stress, and connect deeply with their bodies. To complement this holistic approach, I am also a certified flexologist, specializing in professional assisted stretching. My sessions focus on targeted techniques that increase flexibility, alleviate tension, and dramatically improve mobility. From busy corporate offices to the comfort of your own space, my mission is to provide to convenient, high-impact wellness that leaves you moving better, feeling lighter, and living with greater clarity. Let's work together to unlock your body's full potential and find your center</p>
+    </div>
+    </div>
+  </section>
+
+  <!-- How it Works -->
+  <section class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="text-center max-w-xl mx-auto mb-16 reveal">
+        <p class="text-ember text-xs tracking-widest uppercase mb-3">Simple Process</p>
+        <h2 class="font-display text-4xl md:text-5xl text-charcoal leading-tight">Booking takes<br/><em>under 3 minutes</em></h2>
+      </div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-8">
+        <div class="reveal text-center">
+          <div class="w-14 h-14 border-2 border-mist flex items-center justify-center mx-auto mb-5 text-sage hover:bg-sage hover:text-white hover:border-transparent"><i class="fa-solid fa-hand-pointer text-xl"></i></div>
+          <h4 class="font-medium text-charcoal mb-2 text-sm">Choose a Service</h4>
+          <p class="text-warm-gray text-xs leading-relaxed">Pick your package, duration, and any add-ons.</p>
+        </div>
+        <div class="reveal text-center">
+          <div class="w-14 h-14 border-2 border-mist flex items-center justify-center mx-auto mb-5 text-sage hover:bg-sage hover:text-white hover:border-transparent"><i class="fa-solid fa-calendar-days text-xl"></i></div>
+          <h4 class="font-medium text-charcoal mb-2 text-sm">Pick a Time</h4>
+          <p class="text-warm-gray text-xs leading-relaxed">Select from real-time availability. No back-and-forth.</p>
+        </div>
+        <div class="reveal text-center">
+          <div class="w-14 h-14 border-2 border-mist flex items-center justify-center mx-auto mb-5 text-sage hover:bg-sage hover:text-white hover:border-transparent"><i class="fa-solid fa-credit-card text-xl"></i></div>
+          <h4 class="font-medium text-charcoal mb-2 text-sm">Pay Securely</h4>
+          <p class="text-warm-gray text-xs leading-relaxed">Full price shown upfront. Secure payment at booking.</p>
+        </div>
+        <div class="reveal text-center">
+          <div class="w-14 h-14 border-2 border-mist flex items-center justify-center mx-auto mb-5 text-sage hover:bg-sage hover:text-white hover:border-transparent"><i class="fa-solid fa-circle-check text-xl"></i></div>
+          <h4 class="font-medium text-charcoal mb-2 text-sm">We Show Up</h4>
+          <p class="text-warm-gray text-xs leading-relaxed">Confirmation instantly. Reminder 48hrs before. On time.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <!-- <section class="py-24 bg-ivory">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="max-w-xl mb-16 reveal">
+        <p class="text-ember text-xs tracking-widest uppercase mb-3">Client Stories</p>
+        <h2 class="font-display text-4xl md:text-5xl text-charcoal leading-tight">What people<br/><em>are saying</em></h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="testimonial-card reveal">
+          <div class="flex gap-1 text-ember text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-5">"Having someone come to my apartment and work through my specific tension points was completely different. My lower back pain improved after the first session."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-mist flex items-center justify-center text-sage text-sm font-semibold">A</div>
+            <div><p class="text-charcoal text-sm font-medium">Amanda R.</p><p class="text-warm-gray text-xs">Personal Client</p></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="flex gap-1 text-ember text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-5">"We brought Breathe Easy into our office for a team session. The feedback was overwhelmingly positive. It genuinely lifted the energy for the rest of the week."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-mist flex items-center justify-center text-sage text-sm font-semibold">D</div>
+            <div><p class="text-charcoal text-sm font-medium">Daniel K.</p><p class="text-warm-gray text-xs">HR Director, TechCorp</p></div>
+          </div>
+        </div>
+        <div class="testimonial-card reveal">
+          <div class="flex gap-1 text-ember text-xs mb-4"><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i></div>
+          <p class="text-charcoal text-sm leading-relaxed mb-5">"The guided meditation session genuinely helped me with my anxiety. It wasn't generic — she tailored it completely. Booking was incredibly easy."</p>
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-mist flex items-center justify-center text-sage text-sm font-semibold">M</div>
+            <div><p class="text-charcoal text-sm font-medium">Maya T.</p><p class="text-warm-gray text-xs">Personal Client</p></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> -->
+
+  <!-- QR Section -->
+  <section class="py-24 bg-sage text-off-white" id="qr">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-2 gap-16 items-center">
+        <div class="reveal-left">
+          <p class="text-mist text-xs tracking-widest uppercase mb-4">Instant Access</p>
+          <h2 class="font-display text-4xl md:text-5xl leading-tight mb-6">Scan to book<br/><em>in seconds</em></h2>
+          <p class="text-off-white/70 leading-relaxed mb-4">Share this QR code on business cards, flyers, or social media. Clients scan it and land directly on the booking page.</p>
+          <p class="text-off-white/40 text-sm">Generated automatically — always links to the latest booking page.</p>
+        </div>
+        <div class="reveal-right flex flex-col items-center">
+          <div class="bg-white p-8 inline-block">
+            <!-- QR image URL provided manually by business owner -->
+            <img id="site-qr-image" src="" alt="Booking QR Code" class="w-48 h-48 object-contain hidden" />
+            <div id="qr-fallback" class="w-48 h-48 flex flex-col items-center justify-center gap-3 bg-off-white">
+              <i class="fa-solid fa-qrcode text-sage text-6xl"></i>
+              <p class="text-warm-gray text-xs text-center">QR code image<br/>not yet added</p>
+            </div>
+          </div>
+          <a id="qr-download-btn" href="" download="breathe-easy-booking-qr.png" class="text-mist/70 hover:text-mist text-xs mt-4 tracking-wide flex items-center gap-2 transition-colors hidden">
+            <i class="fa-solid fa-download"></i> Download QR Code
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section id="contact" class="py-24 bg-white">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-2 gap-16">
+        <div class="reveal-left">
+          <p class="text-ember text-xs tracking-widest uppercase mb-3">Get in Touch</p>
+          <h2 class="font-display text-4xl md:text-5xl text-charcoal leading-tight mb-6">Questions before<br/><em>you book?</em></h2>
+          <p class="text-warm-gray leading-relaxed mb-8">We're happy to walk you through our services, help choose the right package, or discuss corporate wellness for your team.</p>
+          <div class="space-y-4">
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 border border-mist flex items-center justify-center text-sage shrink-0"><i class="fa-solid fa-envelope text-sm"></i></div>
+              <div>
+                <p class="text-xs text-warm-gray uppercase tracking-wider mb-0.5">Email</p>
+                <a href="mailto:hello@breatheasystretch.com" class="text-charcoal text-sm hover:text-ember transition-colors no-underline">hello@breatheasystretch.com</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 border border-mist flex items-center justify-center text-sage shrink-0"><i class="fa-solid fa-phone text-sm"></i></div>
+              <div>
+                <p class="text-xs text-warm-gray uppercase tracking-wider mb-0.5">Phone</p>
+                <a href="tel:+15550000000" class="text-charcoal text-sm hover:text-ember transition-colors no-underline">(555) 000-0000</a>
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="w-10 h-10 border border-mist flex items-center justify-center text-sage shrink-0"><i class="fa-brands fa-instagram text-sm"></i></div>
+              <div>
+                <p class="text-xs text-warm-gray uppercase tracking-wider mb-0.5">Instagram</p>
+                <a href="#" class="text-charcoal text-sm hover:text-ember transition-colors no-underline">@breatheasystretch</a>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="reveal-right">
+          <form id="contact-form" class="space-y-5" onsubmit="handleContactForm(event)">
+            <div><label class="field-label">Full Name</label><input type="text" class="field-input" id="contact-name" placeholder="Jane Smith" required /></div>
+            <div><label class="field-label">Email</label><input type="email" class="field-input" id="contact-email" placeholder="jane@example.com" required /></div>
+            <div><label class="field-label">Subject</label><input type="text" class="field-input" id="contact-subject" placeholder="Question about booking" required /></div>
+            <div><label class="field-label">Message</label><textarea class="field-input" id="contact-message" rows="4" placeholder="Tell us what you're looking for..." required></textarea></div>
+            <button type="submit" class="btn-primary w-full text-center">Send Message</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-charcoal text-off-white py-16">
+    <div class="max-w-7xl mx-auto px-6 lg:px-10">
+      <div class="grid md:grid-cols-4 gap-10 mb-12">
+        <div class="md:col-span-2">
+          <div class="flex items-center gap-3 mb-5">
+            <div class="w-8 h-8 rounded-full border border-mist/40 flex items-center justify-center"><i class="fa-solid fa-wind text-mist/60 text-xs"></i></div>
+            <span class="font-display text-xl text-off-white/90">Breathe Easy Stretch</span>
+          </div>
+          <p class="text-off-white/40 text-sm leading-relaxed max-w-xs">Mobile stretch therapy and guided meditation. We come to you — because your wellbeing shouldn't have to wait.</p>
+          <div class="flex gap-4 mt-6">
+            <a href="#" class="w-9 h-9 border border-white/15 flex items-center justify-center text-off-white/40 hover:text-off-white hover:border-white/40 transition-all"><i class="fa-brands fa-instagram text-sm"></i></a>
+            <a href="#" class="w-9 h-9 border border-white/15 flex items-center justify-center text-off-white/40 hover:text-off-white hover:border-white/40 transition-all"><i class="fa-brands fa-facebook-f text-sm"></i></a>
+            <a href="#" class="w-9 h-9 border border-white/15 flex items-center justify-center text-off-white/40 hover:text-off-white hover:border-white/40 transition-all"><i class="fa-brands fa-tiktok text-sm"></i></a>
+          </div>
+        </div>
+        <div>
+          <p class="text-xs tracking-widest uppercase text-off-white/30 mb-5">Services</p>
+          <ul class="space-y-3">
+            <li><a href="services.html" class="text-off-white/55 text-sm hover:text-off-white transition-colors no-underline">Personal Sessions</a></li>
+            <li><a href="services.html#corporate" class="text-off-white/55 text-sm hover:text-off-white transition-colors no-underline">Corporate Packages</a></li>
+            <li><a href="booking.html" class="text-off-white/55 text-sm hover:text-off-white transition-colors no-underline">Book a Session</a></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs tracking-widest uppercase text-off-white/30 mb-5">Company</p>
+          <ul class="space-y-3">
+            <li><a href="#about" class="text-off-white/55 text-sm hover:text-off-white transition-colors no-underline">About Us</a></li>
+            <li><a href="#contact" class="text-off-white/55 text-sm hover:text-off-white transition-colors no-underline">Contact</a></li>
+            <li><a href="#" class="text-off-white/55 text-sm hover:text-off-white transition-colors no-underline">Privacy Policy</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4">
+        <p class="text-off-white/30 text-xs">© <span id="year"></span> Breathe Easy Stretch. All rights reserved. Designed & Developed by <a href="https://gedeveloper.netlify.app" class="no-underline text-shadow-off-white/30 hover:text-blue-600">GE. developer</a> and <a href="https://www.dconco.tech" class="no-underline text-shadow-off-white/30 hover:text-pink-600">@dconco</a></p>
+        <a href="booking.html" class="btn-ember text-xs px-5 py-3">Book Now</a>
+      </div>
+    </div>
+  </footer>
+
+  <script type="module" src="/src/js/main.js"></script>
+  <script type="module" src="/src/js/home.js"></script>
+  <script src="/src/js/toast.js"></script>
+  <script src="/src/js/api.js"></script>
+  <script src="/src/js/contact.js"></script>
+  <script src="/src/js/main.js"></script>
+  <script src="/src/js/home.js"></script>
+  <script>
+    // Manual QR image setter — business owner provides URL here
+    const QR_IMAGE_URL = ''; // TODO: paste QR code image URL here once provided
+    if (QR_IMAGE_URL) {
+      const img = document.getElementById('site-qr-image')
+      const fallback = document.getElementById('qr-fallback')
+      const downloadBtn = document.getElementById('qr-download-btn')
+      img.src = QR_IMAGE_URL
+      img.classList.remove('hidden')
+      fallback.classList.add('hidden')
+      downloadBtn.href = QR_IMAGE_URL
+      downloadBtn.classList.remove('hidden')
+    }
+  </script>
+</body>
+</html>
