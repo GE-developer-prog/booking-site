@@ -34,13 +34,7 @@ window.addContactEmail = async function(e) {
     var res = await window.api.adminPost('/admin/contact-email/add', { email: email });
     if (!res) return; // 401 already handled globally by api.js (handle401)
 
-    // TEMPORARY: same empty-response pattern seen elsewhere (booking,
-    // approve, reject, services) — if the HTTP status was successful but
-    // the body couldn't be parsed, treat it as success too. Remove once
-    // backend always returns proper JSON.
-    var isEmptyBodySuccess = res.ok && res.data?.message === 'Invalid server response';
-
-    if (((res.status === 200 || res.status === 201) && res.data?.success) || isEmptyBodySuccess) {
+    if ((res.status === 200 || res.status === 201) && res.data?.success) {
       window.showToast('Contact email added.', 'success');
       if (input) input.value = '';
       void window.loadContactEmails();
@@ -65,11 +59,7 @@ window.deleteContactEmail = async function(id) {
     var res = await window.api.adminDelete('/admin/contact-email/delete/' + id);
     if (!res) return; // 401 already handled globally by api.js (handle401)
 
-    // TEMPORARY: same empty-response pattern seen elsewhere. Remove once
-    // backend always returns proper JSON.
-    var isEmptyBodySuccess = res.ok && res.data?.message === 'Invalid server response';
-
-    if (res.data?.success || isEmptyBodySuccess) {
+    if (res.data?.success) {
       window.showToast('Email removed.', 'success');
       var card = document.querySelector('[data-email-id="' + id + '"]');
       if (card) card.remove();

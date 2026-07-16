@@ -86,7 +86,7 @@ window.approveBooking = async function(id) {
 
     // TEMPORARY: backend confirmed approve actually works but sometimes
     // returns a 2xx with an empty/unparseable body. Remove once fixed.
-    var isEmptyBodySuccess = res.ok && res.data?.message === 'Invalid server response';
+    // var isEmptyBodySuccess = res.ok && res.data?.message === 'Invalid server response';
 
     if (res.data?.success || isEmptyBodySuccess) {
       window.showToast('Booking approved successfully.', 'success');
@@ -133,7 +133,7 @@ window.submitReject = async function() {
 
     // TEMPORARY: backend confirmed reject actually works but sometimes
     // returns a 2xx with an empty/unparseable body. Remove once fixed.
-    var isEmptyBodySuccess = res.ok && res.data?.message === 'Invalid server response';
+    // var isEmptyBodySuccess = res.ok && res.data?.message === 'Invalid server response';
 
     if (res.data?.success || isEmptyBodySuccess) {
       window.showToast('Booking rejected. Client has been notified.', 'success');
