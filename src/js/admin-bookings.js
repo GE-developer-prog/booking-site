@@ -70,7 +70,7 @@ window.loadBookings = async function() {
     }).join('');
 
   } catch(e) {
-    tbody.innerHTML = '<tr><td colspan="8" class="text-center py-8 text-slate-500">An error occurred. Please try again.</td></tr>';
+    tbody.innerHTML = '<tr><td colspan="9" class="text-center py-8 text-slate-500">An error occurred. Please try again.</td></tr>';
   }
 };
 
@@ -84,11 +84,7 @@ window.approveBooking = async function(id) {
     var res = await window.api.adminPatch('/admin/booking/approve/' + id);
     if (!res) return; // 401 already handled globally by api.js (handle401)
 
-    // TEMPORARY: backend confirmed approve actually works but sometimes
-    // returns a 2xx with an empty/unparseable body. Remove once fixed.
-    // var isEmptyBodySuccess = res.ok && res.data?.message === 'Invalid server response';
-
-    if (res.data?.success || isEmptyBodySuccess) {
+    if (res.data?.success) {
       window.showToast('Booking approved successfully.', 'success');
       updateBookingRowStatus(id, 'approved');
     } else {
@@ -131,11 +127,7 @@ window.submitReject = async function() {
 
     window.closeRejectModal();
 
-    // TEMPORARY: backend confirmed reject actually works but sometimes
-    // returns a 2xx with an empty/unparseable body. Remove once fixed.
-    // var isEmptyBodySuccess = res.ok && res.data?.message === 'Invalid server response';
-
-    if (res.data?.success || isEmptyBodySuccess) {
+    if (res.data?.success) {
       window.showToast('Booking rejected. Client has been notified.', 'success');
       updateBookingRowStatus(id, 'rejected');
     } else {
