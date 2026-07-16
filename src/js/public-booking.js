@@ -217,6 +217,7 @@ window.submitBooking = async function() {
     };
     var lastSessionDate = window.getClientLastSession();
     if (lastSessionDate) payload.last_session_date = lastSessionDate;
+    payload.payment_status_frontend_url = window.location.origin + '/confirmation.html';
 
     console.log('[DEBUG] submitBooking payload:', payload);
 
@@ -238,8 +239,16 @@ window.submitBooking = async function() {
 
     if (res.data?.success || isEmptyBodySuccess) {
       window.saveClientLastSession(new Date().toISOString().split('T')[0]);
-      window.showToast('Booking submitted! You will receive a confirmation email once approved.', 'success', 6000);
-      setTimeout(function() { window.navigateTo('/confirmation.html'); }, 1800);
+      var paymentUrl = res.data?.data?.payment_url;
+      if (paymentUrl) {
+        window.showToast('Booking submitted! Redirecting you to payment...', 'success', 3000);
+        setTimeout(function() { window.location.href = paymentUrl; }, 1200);
+      } else {
+        // Fallback: no payment_url returned — go straight to confirmation
+        // instead of leaving the user stuck with no redirect.
+        window.showToast('Booking submitted! You will receive a confirmation email once approved.', 'success', 6000);
+        setTimeout(function() { window.navigateTo('/confirmation.html'); }, 1800);
+      }
     } else if (res.status === 409) {
       window.showToast('That time slot is now fully booked. Please select a different time.', 'error', 6000);
       if (btn) { btn.disabled = false; btn.innerHTML = '<i class="fa-solid fa-lock text-sm"></i> Confirm & Pay'; }

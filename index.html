@@ -317,13 +317,13 @@
         <div class="reveal-right flex flex-col items-center">
           <div class="bg-white p-8 inline-block">
             <!-- QR image URL provided manually by business owner -->
-            <img id="site-qr-image" src="" alt="Booking QR Code" class="w-48 h-48 object-contain hidden" />
+            <img id="site-qr-image" src="/images/qrcode.png" alt="Booking QR Code" class="w-48 h-48 object-contain hidden" />
             <div id="qr-fallback" class="w-48 h-48 flex flex-col items-center justify-center gap-3 bg-off-white">
               <i class="fa-solid fa-qrcode text-sage text-6xl"></i>
               <p class="text-warm-gray text-xs text-center">QR code image<br/>not yet added</p>
             </div>
           </div>
-          <a id="qr-download-btn" href="" download="breathe-easy-booking-qr.png" class="text-mist/70 hover:text-mist text-xs mt-4 tracking-wide flex items-center gap-2 transition-colors hidden">
+          <a id="qr-download-btn" href="/images/qrcode.png" download="breathe-easy-booking-qr.png" class="text-mist/70 hover:text-mist text-xs mt-4 tracking-wide flex items-center gap-2 transition-colors hidden">
             <i class="fa-solid fa-download"></i> Download QR Code
           </a>
         </div>
@@ -423,7 +423,7 @@
   <script src="/src/js/contact.js"></script>
   <script>
     // Manual QR image setter — business owner provides URL here
-    const QR_IMAGE_URL = ''; // TODO: paste QR code image URL here once provided
+    const QR_IMAGE_URL = '/images/qrcode.png'; // TODO: paste QR code image URL here once provided
     if (QR_IMAGE_URL) {
       const img = document.getElementById('site-qr-image')
       const fallback = document.getElementById('qr-fallback')

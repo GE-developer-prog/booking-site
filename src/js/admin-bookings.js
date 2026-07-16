@@ -30,12 +30,12 @@ window.loadBookingOverview = async function() {
 window.loadBookings = async function() {
   var tbody = document.getElementById('bookings-table-body');
   if (!tbody) return;
-  tbody.innerHTML = '<tr><td colspan="8" class="text-center py-8 text-slate-500"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Loading bookings...</td></tr>';
+  tbody.innerHTML = '<tr><td colspan="9" class="text-center py-8 text-slate-500"><i class="fa-solid fa-spinner fa-spin mr-2"></i>Loading bookings...</td></tr>';
 
   try {
     var res = await window.api.adminGet('/admin/booking/list');
     if (!res?.data?.success) { // 401 already handled globally by api.js (handle401)
-      tbody.innerHTML = '<tr><td colspan="8" class="text-center py-8 text-slate-500">Failed to load bookings.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="9" class="text-center py-8 text-slate-500">Failed to load bookings.</td></tr>';
       return;
     }
 
@@ -43,7 +43,7 @@ window.loadBookings = async function() {
     window._adminBookings = bookings;
 
     if (!bookings.length) {
-      tbody.innerHTML = '<tr><td colspan="8" class="text-center py-8 text-slate-500">No bookings yet.</td></tr>';
+      tbody.innerHTML = '<tr><td colspan="9" class="text-center py-8 text-slate-500">No bookings yet.</td></tr>';
       return;
     }
 
@@ -52,6 +52,10 @@ window.loadBookings = async function() {
         ? '<button onclick="approveBooking(' + b.id + ')" class="text-xs px-2 py-1 bg-sage/20 text-mist rounded hover:bg-sage/30 transition-colors font-body border-none cursor-pointer">Approve</button>' +
           '<button onclick="openRejectModal(' + b.id + ')" class="text-xs px-2 py-1 bg-red-500/10 text-red-400 rounded hover:bg-red-500/20 transition-colors font-body border-none cursor-pointer">Reject</button>'
         : '';
+      var paymentStatus = b.payment_status || 'pending';
+      var paymentBadgeCls = paymentStatus === 'paid' ? 'bg-green-500/10 text-green-400'
+        : paymentStatus === 'failed' ? 'bg-red-500/10 text-red-400'
+        : 'bg-yellow-500/10 text-yellow-400';
       return '<tr data-booking-id="' + b.id + '">' +
         '<td><div class="flex items-center gap-2"><div class="w-7 h-7 rounded-full bg-sage/20 flex items-center justify-center text-mist text-xs font-semibold shrink-0">' + (b.name ? b.name.charAt(0) : '?') + '</div>' +
         '<div><p class="text-slate-200 text-sm">' + (b.name || '') + '</p><p class="text-slate-500 text-xs">' + (b.email || '') + '</p></div></div></td>' +
@@ -60,6 +64,7 @@ window.loadBookings = async function() {
         '<td><p class="text-slate-300 text-sm">' + (b.date || '—') + '</p><p class="text-slate-500 text-xs">' + (b.time || '') + (b.timezone ? ' (' + b.timezone + ')' : '') + '</p></td>' +
         '<td class="text-green-400 text-sm">' + (b.service && b.service.price ? '$' + parseFloat(b.service.price).toFixed(2) : '—') + '</td>' +
         '<td><span class="badge badge-' + b.status + '">' + b.status + '</span></td>' +
+        '<td><span class="text-xs px-2 py-0.5 rounded-full ' + paymentBadgeCls + '">' + paymentStatus + '</span></td>' +
         '<td class="text-slate-400 text-xs">' + (b.last_session_date || '—') + '</td>' +
         '<td><div class="flex items-center gap-2"><button onclick="viewBookingDetail(' + b.id + ')" class="text-slate-400 hover:text-slate-200 text-xs px-2 py-1 border border-white/10 rounded hover:border-white/25 font-body bg-transparent cursor-pointer">View</button>' + approveRejectBtns + '</div></td></tr>';
     }).join('');

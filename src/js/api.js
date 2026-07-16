@@ -1,5 +1,5 @@
 // ─── Base URL ─────────────────────────────────────────────────────────────────
-var BASE_URL = "https://should-compaq-numerical-action.trycloudflare.com/api/v1";
+var BASE_URL = "https://printers-power-migration-impact.trycloudflare.com/api/v1";
 
 // ─── Admin token — stored in cookie, 1 hour expiry ───────────────────────────
 window.setAdminToken = function(t) {
