@@ -225,19 +225,9 @@ window.submitBooking = async function() {
 
     // DEBUG: log the exact raw response so it's visible without opening
     // the Network tab manually. Safe to remove once diagnosis is done.
-    console.log('[DEBUG] /booking/create raw response:', res);
+    // console.log('[DEBUG] /booking/create raw response:', res);
 
-    // TEMPORARY: backend confirmed bookings are actually being created
-    // successfully, but /booking/create sometimes returns a 2xx status with
-    // an empty/unparseable body instead of the JSON shown in the API docs.
-    // Until that's fixed server-side, treat "successful HTTP status + failed
-    // JSON parse" as a successful booking too, so users aren't stuck on a
-    // false error. This does NOT swallow real failures (4xx/5xx still show
-    // as failures below) — remove this block once the backend always
-    // returns a proper JSON body.
-    var isEmptyBodySuccess = res && res.ok && res.data?.message === 'Invalid server response';
-
-    if (res.data?.success || isEmptyBodySuccess) {
+    if (res.data?.success) {
       window.saveClientLastSession(new Date().toISOString().split('T')[0]);
       var paymentUrl = res.data?.data?.payment_url;
       if (paymentUrl) {
