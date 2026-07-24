@@ -225,7 +225,7 @@ window.submitBooking = async function() {
 
     // DEBUG: log the exact raw response so it's visible without opening
     // the Network tab manually. Safe to remove once diagnosis is done.
-    // console.log('[DEBUG] /booking/create raw response:', res);
+  
 
     if (res.data?.success) {
       window.saveClientLastSession(new Date().toISOString().split('T')[0]);
